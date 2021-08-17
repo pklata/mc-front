@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getBuildings } from "../api/buildingsApi";
+import BuildingsList from "./BuildingsList";
 
 const BuildingsPage = () => {
   const [buildings, setBuildings] = useState([]);
@@ -11,24 +13,10 @@ const BuildingsPage = () => {
   return (
     <>
       <h2>Locations</h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Street</th>
-            <th>City</th>
-          </tr>
-        </thead>
-        <tbody>
-          {buildings.map((building) => {
-            return (
-              <tr key={building.id}>
-                <td>{building.address}</td>
-                <td>{building.city}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <Link className="btn btn-primary" to="/building">
+        Add Course
+      </Link>
+      <BuildingsList buildings={buildings} />
     </>
   );
 };
